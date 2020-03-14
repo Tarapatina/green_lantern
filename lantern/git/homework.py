@@ -49,8 +49,7 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     """
     if all(isinstance(value, int) for value in [first_value, second_value]):
         return first_value * second_value
-    elif all(isinstance(value, bool) for value in [first_value, second_value]):
-        raise TypeError
+
     else:
         raise TypeError
 
@@ -86,7 +85,7 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
     try:
         first, second = int(first_value), int(second_value)
         return first * second
-    except TypeError or ValueError:
+    except (TypeError, ValueError):
         raise ValueError
 
 
@@ -149,8 +148,10 @@ def simple_sort(data: List[int]) -> List[list]:
         simple_sort([2, 9, 6, 7, 3, 2, 1])
         >>> [1, 2, 2, 3, 6, 7, 9]
     """
+    data = data[:]
 
     newlist = []
+
     for i in range(len(data)):
         m = min(data)
         newlist.append(m)
