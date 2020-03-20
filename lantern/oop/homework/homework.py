@@ -86,10 +86,9 @@ class Cat:
         return f"Your cat ran {kilometers} kilometers"
 
     def get_saturation_level(self):
-        if self.saturation_level == 0:
-            return "Your cat is died :("
-        else:
-            return self.saturation_level
+        def get_saturation_level(self):
+            if self.saturation_level == 0:
+                return ValueError("Your cat is died :(")
 
     def get_average_speed(self):
         return self.average_speed
@@ -148,8 +147,7 @@ class Wall:
 
     def number_of_rolls_of_wallpaper(self, roll_width_m, roll_length_m):
         count_lines_in_roll = roll_length_m / self.height
-        count_lines_in_roll = round(count_lines_in_roll)
-        count_lines = self.width / roll_width_m
+        count_lines = self.width // roll_width_m
         return count_lines / count_lines_in_roll
 
 
