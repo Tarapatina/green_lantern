@@ -66,7 +66,7 @@ class Cat:
     def _set_average_speed(self):
         if self.age <= 7:
             return 12
-        elif self.age >7 and  self.age<=10:
+        elif self.age<=10:
             return 9
         elif self.age >10 :
             return 6
@@ -75,11 +75,11 @@ class Cat:
         kilometers = hours * self.average_speed
         if kilometers <= 25:
             self._reduce_saturation_level(2)
-        elif 25 < kilometers <= 50:
+        elif kilometers <= 50:
             self._reduce_saturation_level(5)
-        elif 50 < kilometers <= 100:
+        elif kilometers <= 100:
             self._reduce_saturation_level(15)
-        elif 100 < kilometers <= 200:
+        elif  kilometers <= 200:
             self._reduce_saturation_level(25)
         else:
             self._reduce_saturation_level(50)
@@ -148,7 +148,8 @@ class Wall:
 
     def number_of_rolls_of_wallpaper(self, roll_width_m, roll_length_m):
         count_lines_in_roll = roll_length_m / self.height
-        count_lines = self.width // roll_width_m
+        count_lines_in_roll = round(count_lines_in_roll)
+        count_lines = self.width / roll_width_m
         return count_lines / count_lines_in_roll
 
 
@@ -366,7 +367,7 @@ class House:
     def get_door_square(self):
         return self.__door.door_square()
 
-    def get_number_of_rolls_of_wallpapers(self, roll_length_m, roll_width_m):
+    def get_number_of_rolls_of_wallpapers(self,  roll_width_m, roll_length_m):
         zero_value(roll_length_m, roll_width_m)
         return sum([i.number_of_rolls_of_wallpaper(roll_width_m, roll_length_m) for i in self.__walls])
 
