@@ -214,6 +214,7 @@ def task_15_list_customers_with_any_order_or_not(cur):
     Args:
         cur: psycopg cursor
 
+
     Returns: 213 records
     """
     cur.execute('SELECT customername, contactname, country, orderid FROM customers, orders WHERE  customers.customerid = orders.customerid')
