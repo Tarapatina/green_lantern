@@ -97,6 +97,7 @@ class TestSQLQueries(unittest.TestCase):
     def test_task_2(self):
         with self.conn.cursor(cursor_factory=RealDictCursor) as cursor:
             actual_result = task_2_list_all_customers(cursor)
+            expected_result = self.load_rows_from_file("task_2.json")
             actual_result = [dict(record) for record in actual_result]
             expected_result = self.load_rows_from_file("task_2.json")
 
